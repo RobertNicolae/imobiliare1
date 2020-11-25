@@ -10,6 +10,7 @@ class SimpleClient extends Client
     protected string $CNP;
     protected string $status;
     protected int $age;
+    protected int $offers;
 
     /**
      * @return string
@@ -64,5 +65,24 @@ class SimpleClient extends Client
         $this->age = $age;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getOffers(): int
+    {
+        return $this->offers;
+    }
+
+    /**
+     * @param int $offers
+     * @return SimpleClient
+     */
+    public function setOffers(int $offers): SimpleClient
+    {
+        $this->offers = $offers;
+        return $this;
+    }
+
 
 }

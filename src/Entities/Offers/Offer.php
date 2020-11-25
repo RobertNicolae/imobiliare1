@@ -15,6 +15,17 @@ abstract class Offer
     protected string $description;
     protected Immobile $immobil;
     protected Seller $seller;
+    protected int $status = 0;
+
+    public const STATUS_TYPE_1 = 1;
+    public const STATUS_TYPE_2 = 2;
+    public const STATUS_TYPE_3 = 3;
+    public const STATUS_LABELS = [
+        self::STATUS_TYPE_1 => "Oferta plasata",
+        self::STATUS_TYPE_2 => "Oferta finalizata",
+        self::STATUS_TYPE_3 => "Oferta expirata"
+
+    ];
 
 
     /**
@@ -107,6 +118,25 @@ abstract class Offer
         $this->seller = $seller;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     * @return Offer
+     */
+    public function setStatus(int $status): Offer
+    {
+        $this->status = $status;
+        return $this;
+    }
+
 
 
 }

@@ -4,6 +4,7 @@
 namespace App\Services;
 
 require_once 'src/Entities/Offers/RentOffer.php';
+require_once 'src/Entities/Offers/SellOffer.php';
 
 use App\Entities\Agency;
 use App\Entities\Client;
@@ -48,7 +49,7 @@ class OfferService
             ->setDescription($description)
             ->setDate($date);
 
-            return $privaterentOffer;
+        return $privaterentOffer;
     }
 
     public function getAgencySellOffer(Agency $agency, Immobile $immobile, float $basePrice, string $description): SellOffer
@@ -61,10 +62,10 @@ class OfferService
             ->setDescription($description);
 
 
-    return $agencysellOffer;
+        return $agencysellOffer;
     }
 
-    public function getRealEstateSellOffer(RealEstateDev $realEstateDev, Immobile $immobile, float $baseprice, string $descripton, int $acceptCredit = 0, int $monthPayments = 0):SellOffer
+    public function getRealEstateSellOffer(RealEstateDev $realEstateDev, Immobile $immobile, float $baseprice, string $descripton, int $status, int $acceptCredit = 0, int $monthPayments = 0): SellOffer
     {
         $realestateSellOffer = new SellOffer();
         $realestateSellOffer
@@ -72,13 +73,24 @@ class OfferService
             ->setImmobil($immobile)
             ->setPrice($baseprice)
             ->setDescription($descripton)
-            ->setMonthPayments($monthPayments);
-            if($acceptCredit){
-                $realestateSellOffer->setAcceptCredit($acceptCredit);
-                $realestateSellOffer->setMonthPayments($monthPayments);
-            }
+            ->setStatus($status);
+        if ($realestateSellOffer->getStatus() === 1) {
+            echo "Oferta a fost plasata \n";
+        }
+        if ($realestateSellOffer->getStatus() === 2) {
+            echo "Oferta este finalizata \n";
+        }
+        if ($realestateSellOffer->getStatus() === 3) {
+            echo "Oferta este expirata \n";
+        }
 
-    return $realestateSellOffer;
+
+        if ($acceptCredit) {
+            $realestateSellOffer->setAcceptCredit($acceptCredit);
+            $realestateSellOffer->setMonthPayments($monthPayments);
+        }
+
+        return $realestateSellOffer;
     }
 
     public function messageToOffer(SimpleClient $client, Offer $offer, string $description): Message
@@ -89,6 +101,43 @@ class OfferService
             ->setClient($client)
             ->setOffer($offer);
 
+        if ($offer->getStatus() === 1) {
+            echo "Oferta a fost plasata \n";
+        }
+        if ($offer->getStatus() === 2) {
+            echo "Oferta este finalizata nu se poate trimite mesaj";
+
+        }
+        if ($offer->getStatus() === 3) {
+            echo "Oferta a expirat nu se poate trimite mesaj";
+        }
+
         return $messageToOffer;
+    }
+
+    public function offerToClient(Offer $offer, SimpleClient $client): Offer
+    {
+        $offer->getImmobil();
+        $offer->getPrice();
+        $offer->getDescription();
+
+
+        return $offer;
+    }
+
+    public function acceptSimpleOffer(SimpleClient $simpleClient, Offer $offer)
+    {
+        if(!$offer) {
+            echo "Nu aveti oferte";
+        }
+        if ($offer->getStatus() === 2 | 3) {
+            echo "Oferta a expirat sau este finalizata deja";
+        } else if ($offer->getStatus() === 1) {
+            echo "Oferta a fost acceptata";
+            $offer->setStatus(2);
+
+        }
+
+        return $offer;
     }
 }

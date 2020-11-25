@@ -20,24 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2b20afa-c36b-42ff-ad8b-a4ce4cc3d8ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Agency.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Immobile/Apartment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Immobile/House.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Immobile/Immobile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Immobile/Structure.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Offers/Offer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Offers/RentOffer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Offers/SellOffer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/PrivateClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/RealEstateDev.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/Seller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/SimpleClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entities/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/AgencyService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/OfferService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/SimpleClientService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/Offers/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Offers/Offer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entities/SimpleClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/SimpleClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/OfferService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/OfferService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605363441164</updated>
       <workItem from="1605363442349" duration="15158000" />
-      <workItem from="1606154729856" duration="12479000" />
+      <workItem from="1606154729856" duration="20778000" />
     </task>
     <servers />
   </component>
@@ -98,10 +86,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1606240148996">
+    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1606331507554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606240148996" />
+    <state x="753" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606331507554" />
     <state x="641" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605371350159">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -110,14 +98,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605371725256" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605367576497">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606335746230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605367576497" />
-    <state x="781" y="242" key="NewPhpClassDialog" timestamp="1606239905277">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606335746230" />
+    <state x="781" y="242" key="NewPhpClassDialog" timestamp="1606335713644">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="781" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606239905277" />
+    <state x="781" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606335713644" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605365295778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
