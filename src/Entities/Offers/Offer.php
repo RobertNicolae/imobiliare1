@@ -7,11 +7,12 @@ namespace App\Entities\Offers;
 use App\Entities\Immobile\Immobile;
 use App\Entities\Seller;
 use App\Entities\User;
+use DateTime;
 
 abstract class Offer
 {
     protected int $price;
-    protected string $date;
+    protected DateTime $deadline;
     protected string $description;
     protected Immobile $immobil;
     protected Seller $seller;
@@ -47,23 +48,7 @@ abstract class Offer
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDate(): string
-    {
-        return $this->date;
-    }
 
-    /**
-     * @param string $date
-     * @return Offer
-     */
-    public function setDate(string $date): Offer
-    {
-        $this->date = $date;
-        return $this;
-    }
 
     /**
      * @return string
@@ -137,6 +122,22 @@ abstract class Offer
         return $this;
     }
 
+    /**
+     * @return DateTime
+     */
+    public function getDeadline(): DateTime
+    {
+        return $this->deadline;
+    }
 
+    /**
+     * @param DateTime $deadline
+     * @return Offer
+     */
+    public function setDeadline(DateTime $deadline): Offer
+    {
+        $this->deadline = $deadline;
+        return $this;
+    }
 
 }

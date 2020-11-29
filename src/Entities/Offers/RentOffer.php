@@ -3,6 +3,8 @@
 
 namespace App\Entities\Offers;
 
+use DateTime;
+
 require_once 'src/Entities/Offers/Offer.php';
 
 class RentOffer extends Offer
@@ -12,6 +14,8 @@ private int $guaranteeValue;
 private string $freeFromDate;
 private string $anaf;
 protected int $commision;
+
+
 
 
 

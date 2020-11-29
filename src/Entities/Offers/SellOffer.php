@@ -4,10 +4,13 @@
 namespace App\Entities\Offers;
 
 
+use DateTime;
+
 class SellOffer extends Offer
 {
 
-    private int $monthPayments; //
+    protected int $monthPayments; //
+
     public const ACCEPT_CREDIT = 1;
     public const NO_CREDIT = 0;
     public const CREDIT_LABELS = [

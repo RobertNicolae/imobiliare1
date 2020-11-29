@@ -16,6 +16,7 @@ use App\Entities\Offers\SellOffer;
 use App\Entities\PrivateClient;
 use App\Entities\RealEstateDev;
 use App\Entities\SimpleClient;
+use DateTime;
 
 class OfferService
 {
@@ -65,7 +66,7 @@ class OfferService
         return $agencysellOffer;
     }
 
-    public function getRealEstateSellOffer(RealEstateDev $realEstateDev, Immobile $immobile, float $baseprice, string $descripton, int $status, int $acceptCredit = 0, int $monthPayments = 0): SellOffer
+    public function getRealEstateSellOffer(RealEstateDev $realEstateDev, Immobile $immobile, float $baseprice, string $descripton, DateTime $deadline, int $acceptCredit = 0, int $monthPayments = 0): SellOffer
     {
         $realestateSellOffer = new SellOffer();
         $realestateSellOffer
@@ -73,7 +74,9 @@ class OfferService
             ->setImmobil($immobile)
             ->setPrice($baseprice)
             ->setDescription($descripton)
+            ->setDeadline($deadline)
             ->setStatus($status);
+
         if ($realestateSellOffer->getStatus() === 1) {
             echo "Oferta a fost plasata \n";
         }
@@ -101,14 +104,15 @@ class OfferService
             ->setClient($client)
             ->setOffer($offer);
 
-        if ($offer->getStatus() === 1) {
+
+        if (time() <= $offer->getDeadline() && $offer->getStatus() !== 2) {
             echo "Oferta a fost plasata \n";
         }
         if ($offer->getStatus() === 2) {
             echo "Oferta este finalizata nu se poate trimite mesaj";
 
         }
-        if ($offer->getStatus() === 3) {
+        if ($offer->getStatus() === 3 || time() <= $offerDeadline ) {
             echo "Oferta a expirat nu se poate trimite mesaj";
         }
 
@@ -120,6 +124,7 @@ class OfferService
         $offer->getImmobil();
         $offer->getPrice();
         $offer->getDescription();
+        $client->getName();
 
 
         return $offer;

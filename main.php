@@ -25,6 +25,10 @@ use http\Client;
 $privateClient = new PrivateClient();
 $realestateDev = new RealEstateDev();
 
+$date1 = new DateTime('May 13th, 1986');
+$date2 = new DateTime('October 28th, 1989');
+$difference = $date1->diff($date2);
+
 $privateClient
     ->setName("test")
     ->setEmail("test")
@@ -61,13 +65,17 @@ $client->setName("barosanu")
     ->setCNP(1321312321414142121);
 
 
-$messageToOffer = $offerService->messageToOffer($client, $agencyrentOffer, "blablab");
+$messageToOffer = $offerService->messageToOffer($client, $agencyrentOffer, "Is My");
 
-$realestateSellOffer = $offerService->getRealEstateSellOffer($realestateDev, $apartament, 100000, "Ap mare cu 49 camere", Offer::STATUS_TYPE_2, SellOffer::ACCEPT_CREDIT, 360);
+$realestateSellOffer = $offerService->getRealEstateSellOffer($realestateDev, $apartament, 100000, "Ap mare cu 49 camere", $date1, SellOffer::ACCEPT_CREDIT, 360);
 
 //var_dump($realestateSellOffer);
 
 $offerService->offerToClient($realestateSellOffer, $client);
-var_dump($offerService->acceptSimpleOffer($client, $realestateSellOffer ));
+//var_dump($offerService->acceptSimpleOffer($client, $realestateSellOffer ));
+
+
+var_dump($realestateSellOffer);
+
 
 
