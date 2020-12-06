@@ -13,18 +13,19 @@ abstract class Offer
 {
     protected int $price;
     protected DateTime $deadline;
+    private DateTime $freeFromDate;
     protected string $description;
     protected Immobile $immobil;
     protected Seller $seller;
-    protected int $status = 0;
+    protected int $status;
 
-    public const STATUS_TYPE_1 = 1;
-    public const STATUS_TYPE_2 = 2;
-    public const STATUS_TYPE_3 = 3;
+    public const STATUS_OFFER_PLACED = 1;
+    public const STATUS_OFFER_FINISH = 2;
+    public const STATUS_OFFER_EXPIRED = 3;
     public const STATUS_LABELS = [
-        self::STATUS_TYPE_1 => "Oferta plasata",
-        self::STATUS_TYPE_2 => "Oferta finalizata",
-        self::STATUS_TYPE_3 => "Oferta expirata"
+        self::STATUS_OFFER_PLACED => "Oferta plasata",
+        self::STATUS_OFFER_FINISH => "Oferta finalizata",
+        self::STATUS_OFFER_EXPIRED => "Oferta expirata"
 
     ];
 
@@ -47,7 +48,6 @@ abstract class Offer
         $this->price = $price;
         return $this;
     }
-
 
 
     /**
@@ -139,5 +139,24 @@ abstract class Offer
         $this->deadline = $deadline;
         return $this;
     }
+
+    /**
+     * @return DateTime
+     */
+    public function getFreeFromDate(): DateTime
+    {
+        return $this->freeFromDate;
+    }
+
+    /**
+     * @param DateTime $freeFromDate
+     * @return Offer
+     */
+    public function setFreeFromDate(DateTime $freeFromDate): Offer
+    {
+        $this->freeFromDate = $freeFromDate;
+        return $this;
+    }
+
 
 }

@@ -17,7 +17,7 @@ public function createSimpleClientFromUser(User $user, string $cnp, int $age, st
             ->setEmail($user->getEmail())
             ->setCNP($cnp)
             ->setAge($age);
-        return $agency;
+        return $simpleClient;
     }
-}
+
 }

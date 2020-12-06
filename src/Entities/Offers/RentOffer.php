@@ -9,15 +9,11 @@ require_once 'src/Entities/Offers/Offer.php';
 
 class RentOffer extends Offer
 {
-private int $rentPeriod;
-private int $guaranteeValue;
-private string $freeFromDate;
-private string $anaf;
-protected int $commision;
-
-
-
-
+    private int $rentPeriod;
+    private int $guaranteeValue;
+    private DateTime $freeFromDate;
+    private bool $anaf;
+    protected int $commision;
 
     /**
      * @return int
@@ -56,36 +52,36 @@ protected int $commision;
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getFreeFromDate(): string
+    public function getFreeFromDate(): DateTime
     {
         return $this->freeFromDate;
     }
 
     /**
-     * @param string $freeFromDate
+     * @param DateTime $freeFromDate
      * @return RentOffer
      */
-    public function setFreeFromDate(string $freeFromDate): RentOffer
+    public function setFreeFromDate(DateTime $freeFromDate): RentOffer
     {
         $this->freeFromDate = $freeFromDate;
         return $this;
     }
 
     /**
-     * @return int
+     * @return bool
      */
-    public function getAnaf(): int
+    public function isAnaf(): bool
     {
         return $this->anaf;
     }
 
     /**
-     * @param int $anaf
+     * @param bool $anaf
      * @return RentOffer
      */
-    public function setAnaf(int $anaf): RentOffer
+    public function setAnaf(bool $anaf): RentOffer
     {
         $this->anaf = $anaf;
         return $this;
@@ -107,7 +103,12 @@ protected int $commision;
     {
         $this->commision = $commision;
         return $this;
-    } // de facut LABELS
+    }
+
+
+
+
+
 
 
 

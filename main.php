@@ -7,6 +7,8 @@ require_once 'src/Services/OfferService.php';
 require_once 'src/Services/AgencyService.php';
 require_once 'src/Entities/Message.php';
 require_once 'src/Entities/RealEstateDev.php';
+require_once 'src/Services/RentServices.php';
+require_once 'src/Services/SellServices.php';
 
 
 use App\Entities\Agency;
@@ -20,6 +22,8 @@ use App\Entities\PrivateClient;
 use App\Entities\User;
 use App\Services\AgencyService;
 use App\Services\OfferService;
+use App\Services\RentServices;
+use App\Services\SellServices;
 use http\Client;
 
 $privateClient = new PrivateClient();
@@ -47,7 +51,6 @@ $apartament->setComfort(Apartment::CONFORT_TYPE_1)
     ->setPartitioning(Apartment::PARTITIONING_TYPE_1);
 
 
-//echo Apartment::CONFORT_LABELS[$apartament->getComfort()];
 
 $agencyService = new AgencyService();
 $agency = $agencyService->createAgencyFromUser($privateClient, "ewrew", "rewrw", "rewrwe", "Alpha", "ANG");
@@ -56,7 +59,6 @@ $offerService = new OfferService();
 
 $agencyrentOffer = $offerService->getAgencyRentOffer($agency, $apartament, 323, 12, 50);
 
-//var_dump($agencyrentOffer);
 
 $client = new SimpleClient();
 $client->setName("barosanu")
@@ -65,17 +67,17 @@ $client->setName("barosanu")
     ->setCNP(1321312321414142121);
 
 
-$messageToOffer = $offerService->messageToOffer($client, $agencyrentOffer, "Is My");
-
 $realestateSellOffer = $offerService->getRealEstateSellOffer($realestateDev, $apartament, 100000, "Ap mare cu 49 camere", $date1, SellOffer::ACCEPT_CREDIT, 360);
-
+$offerService->offerToClient($realestateDev, $apartament, $realestateSellOffer, $client, "Apartament 2020", 100000, "Alex");
 //var_dump($realestateSellOffer);
 
-$offerService->offerToClient($realestateSellOffer, $client);
-//var_dump($offerService->acceptSimpleOffer($client, $realestateSellOffer ));
+
+$rentService = new RentServices();
+$rentOff = $rentService->createRentOffer($agency, $apartament, 24, 500, true, 200);
 
 
-var_dump($realestateSellOffer);
-
+$sellService = new SellServices();
+$sellOff = $sellService->createSellOffer($realestateDev, $apartament, 100000, null, null, SellOffer::ACCEPT_CREDIT, 409);
+var_dump($sellOff);
 
 

@@ -20,13 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2b20afa-c36b-42ff-ad8b-a4ce4cc3d8ec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Services/RealEstateDevService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/RentServices.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Services/SellServices.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/Offers/Offer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Offers/Offer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/Offers/RentOffer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Offers/RentOffer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/Offers/SellOffer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Offers/SellOffer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Services/OfferService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/OfferService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/SimpleClientService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/SimpleClientService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +69,9 @@
       <updated>1605363441164</updated>
       <workItem from="1605363442349" duration="15158000" />
       <workItem from="1606154729856" duration="20809000" />
-      <workItem from="1606642173369" duration="4141000" />
+      <workItem from="1606642173369" duration="5010000" />
+      <workItem from="1607160951223" duration="592000" />
+      <workItem from="1607246938302" duration="1353000" />
     </task>
     <servers />
   </component>
@@ -108,10 +111,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606645648082" />
-    <state x="781" y="242" key="NewPhpClassDialog" timestamp="1606645743453">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1606729931246">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="781" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606645743453" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606729931246" />
+    <state x="781" y="242" key="NewPhpClassDialog" timestamp="1607247097644">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="781" y="242" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607247097644" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605365295778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

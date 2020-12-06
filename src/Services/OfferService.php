@@ -15,7 +15,9 @@ use App\Entities\Offers\RentOffer;
 use App\Entities\Offers\SellOffer;
 use App\Entities\PrivateClient;
 use App\Entities\RealEstateDev;
+use App\Entities\Seller;
 use App\Entities\SimpleClient;
+use Cassandra\Date;
 use DateTime;
 
 class OfferService
@@ -36,7 +38,7 @@ class OfferService
         return $agencyrentOffer;
     }
 
-    public function getPrivateRentOffer(PrivateClient $privateClient, Immobile $immobile, float $basePrice, int $rentPeriod, int $guaranteeValue, string $freeFromDate, string $anaf, string $description, string $date): RentOffer
+    public function getPrivateRentOffer(PrivateClient $privateClient, Immobile $immobile, float $basePrice, int $rentPeriod, int $guaranteeValue, DateTime $freeFromDate, string $anaf, string $description, string $date): RentOffer
     {
         $privaterentOffer = new RentOffer();
         $privaterentOffer
@@ -48,7 +50,7 @@ class OfferService
             ->setFreeFromDate($freeFromDate)
             ->setAnaf($anaf)
             ->setDescription($description)
-            ->setDate($date);
+            ->setFreeFromDate($freeFromDate);
 
         return $privaterentOffer;
     }
@@ -71,21 +73,14 @@ class OfferService
         $realestateSellOffer = new SellOffer();
         $realestateSellOffer
             ->setSeller($realEstateDev)
+            ->setStatus(Offer::STATUS_OFFER_PLACED)
             ->setImmobil($immobile)
             ->setPrice($baseprice)
             ->setDescription($descripton)
-            ->setDeadline($deadline)
-            ->setStatus($status);
+            ->setDeadline($deadline);
 
-        if ($realestateSellOffer->getStatus() === 1) {
-            echo "Oferta a fost plasata \n";
-        }
-        if ($realestateSellOffer->getStatus() === 2) {
-            echo "Oferta este finalizata \n";
-        }
-        if ($realestateSellOffer->getStatus() === 3) {
-            echo "Oferta este expirata \n";
-        }
+
+
 
 
         if ($acceptCredit) {
@@ -104,45 +99,55 @@ class OfferService
             ->setClient($client)
             ->setOffer($offer);
 
-
-        if (time() <= $offer->getDeadline() && $offer->getStatus() !== 2) {
-            echo "Oferta a fost plasata \n";
-        }
-        if ($offer->getStatus() === 2) {
-            echo "Oferta este finalizata nu se poate trimite mesaj";
-
-        }
-        if ($offer->getStatus() === 3 || time() <= $offerDeadline ) {
-            echo "Oferta a expirat nu se poate trimite mesaj";
-        }
-
         return $messageToOffer;
     }
 
-    public function offerToClient(Offer $offer, SimpleClient $client): Offer
+    public function offerToClient(Seller $seller, Immobile $immobile, Offer $offer, Client $client, $description, $price, $name): Offer
     {
-        $offer->getImmobil();
-        $offer->getPrice();
-        $offer->getDescription();
-        $client->getName();
+        $offer->setImmobil($immobile)
+            ->setSeller($seller)
+            ->setDescription($description)
+            ->setPrice($price);
+        $client->setName($name);
 
 
         return $offer;
     }
 
-    public function acceptSimpleOffer(SimpleClient $simpleClient, Offer $offer)
+
+
+    public function setDetailsToOffer(Seller $seller, Immobile $immobile, Offer $offer, DateTime $freeFromDate = null, DateTime $deadLine = null ): Offer
     {
-        if(!$offer) {
-            echo "Nu aveti oferte";
-        }
-        if ($offer->getStatus() === 2 | 3) {
-            echo "Oferta a expirat sau este finalizata deja";
-        } else if ($offer->getStatus() === 1) {
-            echo "Oferta a fost acceptata";
-            $offer->setStatus(2);
+        $offer
+            ->setSeller($seller)
+            ->setStatus(Offer::STATUS_OFFER_PLACED)
+            ->setImmobil($immobile);
 
-        }
 
+
+        if ($freeFromDate) {
+            $offer->setFreeFromDate($freeFromDate);
+        } else {
+            $offer->setFreeFromDate($this->getFreeNowDate());
+        }
+    if($deadLine){
+        $offer->setDeadline($deadLine);
+    } else {
+        $this->getDefaultDeadline();
+    }
         return $offer;
     }
+
+
+
+
+    private function getDefaultDeadline(): DateTime
+    {
+        return new DateTime('+30 days');
+    }
+    private function getFreeNowDate(): DateTime
+    {
+        return new DateTime();
+    }
+
 }
