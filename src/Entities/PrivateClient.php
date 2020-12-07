@@ -4,11 +4,12 @@
 namespace App\Entities;
 
 require_once 'src/Entities/Seller.php';
+
 class PrivateClient extends Seller
 {
-protected string $CNP;
-protected string $status;
-protected int $age;
+    protected string $CNP;
+    protected string $status;
+    protected int $age;
 
     /**
      * @return string

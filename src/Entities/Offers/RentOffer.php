@@ -11,7 +11,6 @@ class RentOffer extends Offer
 {
     private int $rentPeriod;
     private int $guaranteeValue;
-    private DateTime $freeFromDate;
     private bool $anaf;
     protected int $commision;
 
@@ -48,24 +47,6 @@ class RentOffer extends Offer
     public function setGuaranteeValue(int $guaranteeValue): RentOffer
     {
         $this->guaranteeValue = $guaranteeValue;
-        return $this;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getFreeFromDate(): DateTime
-    {
-        return $this->freeFromDate;
-    }
-
-    /**
-     * @param DateTime $freeFromDate
-     * @return RentOffer
-     */
-    public function setFreeFromDate(DateTime $freeFromDate): RentOffer
-    {
-        $this->freeFromDate = $freeFromDate;
         return $this;
     }
 

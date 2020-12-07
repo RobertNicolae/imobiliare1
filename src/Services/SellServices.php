@@ -12,25 +12,23 @@ use DateTime;
 
 final class SellServices
 {
-private OfferService $offerService;
+    private OfferService $offerService;
 
-public function __construct(){
-    $this->offerService = new OfferService();
-}
-
-public function createSellOffer(Seller $seller, Immobile $immobile, $price, DateTime $freeFromDate = null, DateTime $deadline = null, int $credit, int $monthPayments = 0)
-{
-$sellOffer = new SellOffer();
-$this->offerService->setDetailsToOffer($seller, $immobile, $sellOffer, $freeFromDate, $deadline);
-$sellOffer
-    ->setPrice($price)
-    ->setAcceptCredit($credit);
-    if($monthPayments) {
-        $sellOffer->setMonthPayments($monthPayments);
-    } else {
-        $sellOffer->setMonthPayments(0);
+    public function __construct()
+    {
+        $this->offerService = new OfferService();
     }
-    return $sellOffer;
-}
+
+    public function createSellOffer(Seller $seller, Immobile $immobile, $price, int $credit, DateTime $freeFromDate = null, DateTime $deadline = null, int $monthPayments = 0)
+    {
+        $sellOffer = new SellOffer();
+        $this->offerService->setDetailsToOffer($seller, $immobile, $sellOffer, $freeFromDate, $deadline);
+        $sellOffer
+            ->setPrice($price)
+            ->setAcceptCredit($credit)
+            ->setMonthPayments($monthPayments);
+
+        return $sellOffer;
+    }
 
 }

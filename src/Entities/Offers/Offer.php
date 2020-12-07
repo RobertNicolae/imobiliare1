@@ -4,9 +4,9 @@
 namespace App\Entities\Offers;
 
 
+use App\Entities\Client;
 use App\Entities\Immobile\Immobile;
 use App\Entities\Seller;
-use App\Entities\User;
 use DateTime;
 
 abstract class Offer
@@ -18,6 +18,7 @@ abstract class Offer
     protected Immobile $immobil;
     protected Seller $seller;
     protected int $status;
+    protected ?Client $clientGranted = null;
 
     public const STATUS_OFFER_PLACED = 1;
     public const STATUS_OFFER_FINISH = 2;
@@ -158,5 +159,21 @@ abstract class Offer
         return $this;
     }
 
+    /**
+     * @return Client|null
+     */
+    public function getClientGranted(): ?Client
+    {
+        return $this->clientGranted;
+    }
 
+    /**
+     * @param Client|null $clientGranted
+     * @return Offer
+     */
+    public function setClientGranted(?Client $clientGranted): Offer
+    {
+        $this->clientGranted = $clientGranted;
+        return $this;
+    }
 }
