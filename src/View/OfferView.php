@@ -13,7 +13,7 @@ class OfferView
         return '
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">' . $offer->getImmobil()->getAddress() . '</h5>
+                <h5 class="card-title">' . $offer->getSeller() . '</h5>
                 <h6 class="card-subtitle mb-2 text-muted">' . $offer->getDescription() . '</h6>
                 <p class="card-text"></p>
                 <a href="#" class="card-link">' . $offer->getPrice() . ' RON</a>

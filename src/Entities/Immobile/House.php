@@ -10,6 +10,25 @@ class House extends Immobile
     private int $landAreaSurface;
     private int $noOfFronts;
     private int $ExitFrontSurface;
+    private int $price;
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     * @return House
+     */
+    public function setPrice(int $price): House
+    {
+        $this->price = $price;
+        return $this;
+    }
 
     /**
      * @return int

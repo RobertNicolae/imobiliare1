@@ -11,6 +11,7 @@ use App\Entities\Client;
 use App\Entities\Immobile\Immobile;
 use App\Entities\Message;
 use App\Entities\Offers\Offer;
+use App\Entities\Offers\RentOffer;
 use App\Entities\Offers\SellOffer;
 use App\Entities\RealEstateDev;
 use App\Entities\Seller;
@@ -20,6 +21,18 @@ use Exception;
 
 class OfferService
 {
+    public const RENT_OFFER = 1;
+    public const SELL_OFFER = 2;
+    public const OFFER_TYPE = [
+        self::RENT_OFFER => 'RENT',
+        self::SELL_OFFER => 'SELL'
+    ];
+
+    public function getOfferType(Offer $offer): string
+    {
+        return $offer instanceof RentOffer ? self::OFFER_TYPE[self::RENT_OFFER] : self::OFFER_TYPE[self::SELL_OFFER];
+    }
+
     public function getAgencySellOffer(Agency $agency, Immobile $immobile, float $basePrice, string $description): SellOffer
     {
         $agencysellOffer = new SellOffer();

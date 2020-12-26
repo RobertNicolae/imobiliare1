@@ -9,10 +9,11 @@ require_once 'src/Entities/Offers/Offer.php';
 
 class RentOffer extends Offer
 {
-    private int $rentPeriod;
-    private int $guaranteeValue;
-    private bool $anaf;
-    protected int $commision;
+    protected int $rentPeriod;
+    protected int $guaranteeValue;
+    protected bool $anaf;
+    protected int $commision = 0;
+
 
     /**
      * @return int
@@ -85,6 +86,10 @@ class RentOffer extends Offer
         $this->commision = $commision;
         return $this;
     }
+
+
+
+
 
 
 

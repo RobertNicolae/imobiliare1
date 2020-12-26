@@ -10,6 +10,7 @@ class SellOffer extends Offer
 {
 
     protected int $monthPayments; //
+    protected string $type = "SELL";
 
     public const ACCEPT_CREDIT = 1;
     public const NO_CREDIT = 0;
@@ -54,6 +55,16 @@ class SellOffer extends Offer
         $this->monthPayments = $monthPayments;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+
 
 
 }

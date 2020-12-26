@@ -7,6 +7,7 @@ require_once 'src/Entities/Immobile/Immobile.php';
 
 class Apartment extends Immobile
 {
+    protected int $price;
     public const CONFORT_TYPE_1 = 1;
     public const CONFORT_TYPE_2 = 2;
     public const CONFORT_TYPE_3 = 3;
@@ -99,6 +100,24 @@ class Apartment extends Immobile
     public function setHeight(string $height): Apartment
     {
         $this->height = $height;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     * @return Apartment
+     */
+    public function setPrice(int $price): Apartment
+    {
+        $this->price = $price;
         return $this;
     }
 

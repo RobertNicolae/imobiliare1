@@ -1,5 +1,6 @@
 <?php
 
+use App\Entities\Offers\Offer;
 use App\View\OfferView;
 
 require_once 'test_mocks.php';
@@ -71,10 +72,15 @@ require_once 'src/View/OfferView.php';
             <h1 class="jumbotron-heading">Ofertele noastre</h1>
             <p class="lead text-muted">Aici poti vizualiza toate ofertele noastre disponibile.</p>
             <div class="row">
-                <?php foreach ($offers as $offer) { ?>
-                    <div class="col-md-4">
-                        <?= OfferView::renderOfferCard($offer) ?>
-                    </div>
+                <?php
+                    foreach ($offers as $offer) {
+                        /** @var Offer $offer */
+                    ?>
+                        <?php if ($offer->getPrice() >= 2000) { ?>
+                            <div class="col-md-3">
+                                <?= OfferView::renderOfferCard($offer) ?>
+                            </div>
+                        <?php } ?>
                 <?php } ?>
             </div>
         </div>
@@ -102,3 +108,4 @@ require_once 'src/View/OfferView.php';
         crossorigin="anonymous"></script>
 </body>
 </html>
+

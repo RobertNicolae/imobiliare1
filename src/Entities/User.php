@@ -10,6 +10,10 @@ abstract class User
     protected string $email;
     protected string $password;
 
+    public function __toString() {
+        return $this->name;
+    }
+
     /**
      * @return string
      */

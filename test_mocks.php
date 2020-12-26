@@ -40,5 +40,6 @@ $offerService = new OfferService();
 $rentOfferOne = $rentOfferService->createPrivateClientRentOffer($privateClient, $apartament, 1200, 12, 1200, true, "Test");
 $rentOfferTwo = $rentOfferService->createPrivateClientRentOffer($privateClient, $apartament, 2500, 12, 1200, true, "Test");
 $rentOfferThree = $rentOfferService->createPrivateClientRentOffer($privateClient, $apartament, 1800, 24, 1200, true, "Test");
+$rentOfferFour = $rentOfferService->createPrivateClientRentOffer($privateClient, $apartament, 4000, 24, 1200, true, "Test");
 
-$offers = [$rentOfferOne, $rentOfferTwo, $rentOfferThree];
+$offers = [$rentOfferOne, $rentOfferTwo, $rentOfferThree, $rentOfferFour];

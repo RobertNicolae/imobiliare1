@@ -14,7 +14,7 @@ abstract class Offer
     protected int $price;
     protected DateTime $deadline;
     private DateTime $freeFromDate;
-    protected string $description;
+    protected string $description = "";
     protected Immobile $immobil;
     protected Seller $seller;
     protected int $status;
@@ -176,4 +176,6 @@ abstract class Offer
         $this->clientGranted = $clientGranted;
         return $this;
     }
+
+
 }

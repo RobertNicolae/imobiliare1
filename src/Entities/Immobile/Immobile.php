@@ -13,6 +13,34 @@ abstract class Immobile
     protected string $totalArea;
     protected string $height;
     protected Structure $structure;
+    protected int $type;
+
+    public const TYPE_HOUSE = 1;
+    public const TYPE_APARTMENT = 2;
+    public const TYPE_LABELS = [
+        self::TYPE_HOUSE => "House",
+        self::TYPE_APARTMENT => "Apartment"
+
+        ];
+
+    /**
+     * @return int
+     */
+    public function getType(): int
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     * @return Immobile
+     */
+    public function setType(int $type): Immobile
+    {
+        $this->type = $type;
+        return $this;
+    }
+
 
     /**
      * @return string
@@ -139,6 +167,11 @@ abstract class Immobile
         $this->structure = $structure;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+
 
 
 }
