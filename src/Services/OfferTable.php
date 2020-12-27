@@ -57,18 +57,21 @@ class OfferTable extends Table
     {
         $offerService = new OfferService();
         $table = new Table();
-        if ($offerService->getOfferType($offer) === OfferService::RENT_OFFER) {
-            $rentOffer = new RentOffer();
-
-            $table->setHeaders(["Anaf", "Agency Comission", "FreeFromDate"]);
-            $table->addRow([$rentOffer->getSeller(), $rentOffer->getSeller(), $rentOffer->getSeller()]);
-            $table->getTable();
+        if ($offerService->getOfferType($offer) === OfferService::OFFER_TYPE[OfferService::RENT_OFFER]) {
+            $this->setTableForRentOffer($offer, $table);
         } else {
-            $sellOffer = new SellOffer();
-            $table->setHeaders((["Rate credit", "Negociat"]));
-            $table->addRow([$sellOffer->getSeller(), $sellOffer->getPrice()]);
+           $this->setTableForSellOffer($offer, $table);
+
         }
         return $table->getTable();
 
+    }
+    private function setTableForRentOffer(RentOffer $rentOffer, Table $table){
+        $table->setHeaders(["Anaf", "Agency Comission", "FreeFromDate"]);
+        $table->addRow([$rentOffer->isAnaf(), $rentOffer->getCommision(), $rentOffer->getFreeFromDate()->format("d/m/Y")]);
+    }
+    private function setTableForSellOffer(SellOffer $sellOffer, Table $table){
+        $table->setHeaders((["Rate credit", "Negociat"]));
+        $table->addRow([$sellOffer->getSeller(), $sellOffer->getPrice()]);
     }
 }
